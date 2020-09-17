@@ -16,8 +16,7 @@ const makeComment=async (githubToken,url,number,body)=>{
 
 try {
   // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hey ${nameToGreet}!`);
+  const dir = core.getInput('node_dir');
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
 
@@ -32,7 +31,8 @@ try {
   //makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   //console.log(`The event payload: ${payload}`);
-  exec("./node_modules/.bin/mocha -v", (error, stdout, stderr) => {
+  exec(`depcheck ${dir}`, (error, stdout, stderr) => {
+    makeComment(githubToken,url,pull_request_number,stdout);
     if (error) {
         console.log(`error: ${error.message}`);
         return;
@@ -41,7 +41,17 @@ try {
         console.log(`stderr: ${stderr}`);
         return;
     }
+});
+  exec(`bundle-phobia -p ${dir}package.json`, (error, stdout, stderr) => {
     makeComment(githubToken,url,pull_request_number,stdout);
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
 });
 
 } catch (error) {
