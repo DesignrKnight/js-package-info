@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: DesignrKnight/js-package-info@v1.1.5
+      uses: DesignrKnight/js-package-info@v1.1.6
       with:
         who-to-greet: 'Awesome Person X'
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
