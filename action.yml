@@ -1,5 +1,8 @@
 name: 'js-package-info'
 description: 'GitHub Actions to analyze the packages used in a JavaScript project'
+branding:
+  icon: 'package'  
+  color: 'black'
 inputs:
   node_dir:  # dir of input repo
     description: 'Root folder of package.json relative to git repo'
