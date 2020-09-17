@@ -22,7 +22,7 @@ jobs:
     - run: npm install -g bundle-phobia-cli
     - run: npm install -g depcheck
     - name: Get Package Info
-      uses: DesignrKnight/js-package-info@v1.2
+      uses: DesignrKnight/js-package-info@v2
       with:
         node_dir: './'
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
