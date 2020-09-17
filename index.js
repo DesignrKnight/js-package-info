@@ -1,6 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const {Octokit}=require('@octokit/core');
+const { spawn } = require("child_process");
+
 
 const makeComment=async (githubToken,url,number,body)=>{
   const octokit=new Octokit({auth:githubToken})
@@ -10,6 +12,7 @@ const makeComment=async (githubToken,url,number,body)=>{
   })
   console.log(newComment);
 }
+
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -29,6 +32,27 @@ try {
   makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload)
   console.log(`The event payload: ${payload}`);
+
+  const ls = spawn("ls", ["-la"]);
+
+  ls.stdout.on("data", data => {
+    console.log(`stdout: ${data}`);
+    makeComment(githubToken,url,pull_request_number,data);
+  });
+
+  ls.stderr.on("data", data => {
+      console.log(`stderr: ${data}`);
+      makeComment(githubToken,url,pull_request_number,data);
+  });
+
+  ls.on('error', (error) => {
+      console.log(`error: ${error.message}`);
+  });
+
+  ls.on("close", code => {
+      console.log(`child process exited with code ${code}`);
+  });
+
 } catch (error) {
   core.setFailed(error.message);
 }
