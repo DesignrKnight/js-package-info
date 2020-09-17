@@ -10,8 +10,6 @@ jobs:
       with:
         node-version: '12'
     - run: npm install -g mocha
-    - run: mocha -v
-    - run: ./node_modules/.bin/mocha -v
     - name: Hello world action step
       id: hello
       uses: DesignrKnight/js-package-info@master
