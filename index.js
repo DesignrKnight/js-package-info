@@ -31,17 +31,17 @@ try {
   const pull_request_number = github.context.payload.pull_request.number;
   //makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  //console.log(`The event payload: ${payload}`);
 
   const ls = spawn("ls", ["-la"]);
 
   ls.stdout.on("data", data => {
-    console.log(`stdout: ${data}`);
+    //console.log(`stdout: ${data}`);
     makeComment(githubToken,url,pull_request_number,data);
   });
 
   ls.stderr.on("data", data => {
-      console.log(`stderr: ${data}`);
+      //console.log(`stderr: ${data}`);
       makeComment(githubToken,url,pull_request_number,data);
   });
 
