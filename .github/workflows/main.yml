@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: DesignrKnight/js-package-info
+      uses: DesignrKnight/js-package-info@v1
       with:
         who-to-greet: 'Awesome Person X'
     # Use the output from the `hello` step
