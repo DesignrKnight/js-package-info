@@ -31,7 +31,18 @@ try {
   //makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   //console.log(`The event payload: ${payload}`);
-  exec(`depcheck ${dir} && bundle-phobia -p ${dir}package.json`, (error, stdout, stderr) => {
+  exec(`depcheck ${dir}`, (error, stdout, stderr) => {
+    makeComment(githubToken,url,pull_request_number,stdout);
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+});
+  exec(`bundle-phobia -p ${dir}package.json`, (error, stdout, stderr) => {
     makeComment(githubToken,url,pull_request_number,stdout);
     if (error) {
         console.log(`error: ${error.message}`);
