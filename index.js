@@ -20,12 +20,12 @@ try {
 
   const githubToken = core.getInput('GITHUB_TOKEN');
 
-  const url=context.payload.pull_request.comments_url.substr(22);
-  if (context.payload.pull_request == null) {
+  const url=github.context.payload.pull_request.comments_url.substr(22);
+  if (github.context.payload.pull_request == null) {
       core.setFailed('No pull request found.');
       return;
   }
-  const pull_request_number = context.payload.pull_request.number;
+  const pull_request_number = github.context.payload.pull_request.number;
   makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload)
   console.log(`The event payload: ${payload}`);
