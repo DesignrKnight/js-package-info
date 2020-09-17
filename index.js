@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const {Octokit}=require('@octokit/core');
-const { spawn } = require("child_process");
+const { exec } = require("child_process");
 
 
 const makeComment=async (githubToken,url,number,body)=>{
@@ -32,26 +32,17 @@ try {
   //makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   //console.log(`The event payload: ${payload}`);
-
-  const ls = spawn("ls", ["-la"]);
-
-  ls.stdout.on("data", data => {
-    //console.log(`stdout: ${data}`);
-    makeComment(githubToken,url,pull_request_number,data);
-  });
-
-  ls.stderr.on("data", data => {
-      //console.log(`stderr: ${data}`);
-      makeComment(githubToken,url,pull_request_number,data);
-  });
-
-  ls.on('error', (error) => {
-      console.log(`error: ${error.message}`);
-  });
-
-  ls.on("close", code => {
-      console.log(`child process exited with code ${code}`);
-  });
+  exec("ls -la", (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    makeComment(githubToken,url,pull_request_number,stdout);
+});
 
 } catch (error) {
   core.setFailed(error.message);
