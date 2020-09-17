@@ -1,9 +1,9 @@
 # JS Package Info
-GitHub Actions to analyze the packages used in a JavaScript project. Helps mainatiners have control over the packages used in project.
+GitHub Action to analyze the packages used in a JavaScript project. Helps maintainers have control over the packages used in the project.
 
 What it does:
  - Lists the unused packages
- - Lists the expected size of the node modules after deployemnt
+ - Lists the expected size of the node modules after deployment
 
 ## Usage
 Adding the following to your workflow will create a new job using the js-package-info Actions.
@@ -43,7 +43,7 @@ Suggestions and issues can be posted on the repository's
 
 
 ## Dependencies
-The Actions uses the following for its working
+The Actions uses the following for its working.
  - [actions/checkout@v2](https://github.com/actions/checkout)
  - [actions/setup-node@v1](https://github.com/actions/setup-node)
  - [bundle-phobia-cli](https://www.npmjs.com/package/bundle-phobia-cli)
@@ -51,4 +51,4 @@ The Actions uses the following for its working
 
 
 ## License
-See the [License File](https://github.com/getsentry/action-release/blob/master/LICENSE).
+See the [License File](https://github.com/DesignrKnight/js-package-info/LICENSE).
