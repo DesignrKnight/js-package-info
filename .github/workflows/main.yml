@@ -3,7 +3,7 @@ on: [pull_request]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: An Action to analyze javascript packages
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -11,9 +11,8 @@ jobs:
         node-version: '12'
     - run: npm install -g bundle-phobia-cli
     - run: npm install -g depcheck
-    - name: Hello world action step
-      id: hello
-      uses: DesignrKnight/js-package-info@master
+    - name: Get Package Info
+      uses: DesignrKnight/js-package-info@v1.2
       with:
         node_dir: './'
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
