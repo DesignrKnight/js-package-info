@@ -10,12 +10,10 @@ jobs:
       with:
         node-version: '12'
     - run: npm install -g bundle-phobia-cli
+    - run: npm install -g depcheck
     - name: Hello world action step
       id: hello
       uses: DesignrKnight/js-package-info@master
       with:
-        who-to-greet: 'Awesome Person X'
+        node_dir: '.'
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
