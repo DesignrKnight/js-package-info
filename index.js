@@ -29,8 +29,8 @@ try {
       return;
   }
   const pull_request_number = github.context.payload.pull_request.number;
-  makeComment(githubToken,url,pull_request_number,nameToGreet);
-  const payload = JSON.stringify(github.context.payload)
+  //makeComment(githubToken,url,pull_request_number,nameToGreet);
+  const payload = JSON.stringify(github.context.payload, undefined, 2)
   console.log(`The event payload: ${payload}`);
 
   const ls = spawn("ls", ["-la"]);
