@@ -1,0 +1,30 @@
+{
+  "name": "js-package-info",
+  "version": "1.0.0",
+  "description": "GitHub Actions to analyze the packages used in a JavaScript project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DesignrKnight/js-package-info.git"
+  },
+  "keywords": [
+    "GitHub",
+    "Actions",
+    "Bundle",
+    "JS",
+    "Package"
+  ],
+  "author": "DesignrKnight",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DesignrKnight/js-package-info/issues"
+  },
+  "homepage": "https://github.com/DesignrKnight/js-package-info#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.5",
+    "@actions/github": "^4.0.0"
+  }
+}
