@@ -9,7 +9,7 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12'
-    - run: npm install mocha
+    - run: npm install -g mocha
     - run: mocha -v
     - run: ./node_modules/.bin/mocha -v
     - name: Hello world action step
