@@ -9,7 +9,7 @@ const makeComment=async (githubToken,url,number,body)=>{
   const newComment = await octokit.request('POST '+url, {    
     issue_number: number,
     body: body
-  })
+  }).catch(err => {throw err})
   console.log(newComment);
 }
 
