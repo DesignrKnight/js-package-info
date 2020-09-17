@@ -5,8 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     name: A job to say hello
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2.3.2
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: npm install mocha
+    - run: mocha -v
+    - run: ./node_modules/.bin/mocha -v
     - name: Hello world action step
       id: hello
       uses: DesignrKnight/js-package-info@master
