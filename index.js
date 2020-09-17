@@ -31,7 +31,7 @@ try {
   //makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   //console.log(`The event payload: ${payload}`);
-  exec(`depcheck ${dir}`, (error, stdout, stderr) => {
+  exec(`depcheck`, (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
