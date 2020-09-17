@@ -17,7 +17,6 @@ const makeComment=async (githubToken,url,number,body)=>{
 try {
   // `who-to-greet` input defined in action metadata file
   const dir = core.getInput('node_dir');
-  console.log(`Hey ${nameToGreet}!`);
   const time = (new Date()).toTimeString();
   core.setOutput("time", time);
 
