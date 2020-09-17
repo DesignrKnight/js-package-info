@@ -11,7 +11,6 @@ jobs:
         node-version: '12'
     - run: npm install -g bundle-phobia-cli
     - run: npm install -g depcheck
-    - run: depcheck
     - name: Hello world action step
       id: hello
       uses: DesignrKnight/js-package-info@master
