@@ -32,7 +32,7 @@ try {
   //makeComment(githubToken,url,pull_request_number,nameToGreet);
   const payload = JSON.stringify(github.context.payload, undefined, 2)
   //console.log(`The event payload: ${payload}`);
-  exec("npm install -g bundle-phobia-cli && bundle-phobia lodash react", (error, stdout, stderr) => {
+  exec("./node_modules/.bin/mocha -v", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
         return;
